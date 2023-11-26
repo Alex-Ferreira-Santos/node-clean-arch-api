@@ -1,9 +1,9 @@
 import type { IncomingHttpHeaders } from 'http'
 
 export interface IHttpAdapter {
-  getBody: () => void
-  getParams: () => void
-  getQueryParams: () => void
+  getBody: () => unknown
+  getParams: () => unknown
+  getQueryParams: () => unknown
   getHeaders: () => IncomingHttpHeaders
   send: (props: { status: number, data: any }) => void
 }

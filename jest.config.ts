@@ -1,4 +1,5 @@
 import type { Config } from '@jest/types'
+
 export default async (): Promise<Config.InitialOptions> => {
   return {
     preset: 'ts-jest',
@@ -13,6 +14,6 @@ export default async (): Promise<Config.InitialOptions> => {
     detectOpenHandles: true,
     collectCoverage: true,
     transform: { '^.+\\.tsx?$': 'ts-jest' },
-    forceExit: true
+    forceExit: true,
   }
 }
