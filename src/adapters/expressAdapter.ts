@@ -6,23 +6,23 @@ import type { IncomingHttpHeaders } from 'http'
 export class ExpressAdapter implements IHttpAdapter {
   constructor(private readonly req: Request, private readonly res: Response) {}
 
-  getBody<T>(): T {
+  getBody() {
     return this.req.body
   }
 
-  getParams<T>(): T {
-    return this.req.params as T
+  getParams()  {
+    return this.req.params
   }
 
-  getQueryParams<T>(): T {
-    return this.req.query as T
+  getQueryParams(){
+    return this.req.query
   }
 
   getHeaders(): IncomingHttpHeaders {
     return this.req.headers
   }
 
-  send<T>({ data, status }: { status: number; data: T }): T {
-    return this.res.status(status).json(data) as T
+  send({ data, status }: { status: number; data: unknown }) {
+    return this.res.status(status).json(data) 
   }
 }
