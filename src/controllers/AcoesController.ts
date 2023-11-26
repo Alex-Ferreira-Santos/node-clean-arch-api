@@ -28,9 +28,8 @@ export class AcoesController {
     try {
       const body = ctx.getBody() as TAcaoProps
       const validatedBody = await updateAndCreateActionValidation(body)
-
-      const acoes = await this.createAcaoUseCase.execute(validatedBody)
-      ctx.send({ status: 200, data: acoes })
+      const acaoId = await this.createAcaoUseCase.execute(validatedBody)
+      ctx.send({ status: 200, data: acaoId })
     } catch (error: any) {
       ErrorHandler.handler(error, ctx)
     }
@@ -41,11 +40,11 @@ export class AcoesController {
       const params = ctx.getParams() as Pick<TAcaoProps, 'id'>
       const body = ctx.getBody() as TAcaoProps
       const validatedBody = await updateAndCreateActionValidation(body)
-      const acoes = await this.updateAcaoUseCase.execute({
+      await this.updateAcaoUseCase.execute({
         ...validatedBody,
         id: params.id
       })
-      ctx.send({ status: 200, data: acoes })
+      ctx.send({ status: 200, data: 'success' })
     } catch (error: any) {
       ErrorHandler.handler(error, ctx)
     }
@@ -55,8 +54,8 @@ export class AcoesController {
     try {
       const params = ctx.getParams() as Pick<TAcaoProps, 'id'>
 
-      const acoes = await this.deleteAcaoUseCase.execute({ id: params.id })
-      ctx.send({ status: 200, data: acoes })
+      await this.deleteAcaoUseCase.execute({ id: params.id })
+      ctx.send({ status: 200, data: 'success' })
     } catch (error: any) {
       ErrorHandler.handler(error, ctx)
     }

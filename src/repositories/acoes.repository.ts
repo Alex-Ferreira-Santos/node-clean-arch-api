@@ -7,7 +7,9 @@ export class AcoesRepository {
     return []
   }
 
-  async createAcao(acao: AcaoEntity): Promise<void> {}
+  async createAcao(acao: AcaoEntity): Promise<string> {
+    return '1'
+  }
 
   async updateAcao(acao: AcaoEntity): Promise<void> {}
 

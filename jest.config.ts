@@ -14,6 +14,7 @@ export default async (): Promise<Config.InitialOptions> => {
     detectOpenHandles: true,
     collectCoverage: true,
     transform: { '^.+\\.tsx?$': 'ts-jest' },
+    moduleDirectories: ['node_modules', 'src'],
     forceExit: true,
   }
 }
